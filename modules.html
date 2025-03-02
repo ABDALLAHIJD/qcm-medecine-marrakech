@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modules - QCM Médecine Marrakech</title>
+    <style>
+        /* Variables de couleurs */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+        }
+        
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: var(--secondary-color);
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            padding: 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--light-color);
+        }
+        
+        /* Page titre */
+        .page-title {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: white;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Années */
+        .years-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .year-accordion {
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .year-header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        
+        .year-content {
+            background-color: white;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .year-content.active {
+            max-height: 1000px;
+            padding: 1rem;
+        }
+        
+        /* Modules */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .module-card {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .module-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .module-content {
+            padding: 1rem;
+        }
+        
+        .module-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .module-info {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .module-link {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .module-link:hover {
+            background-color: #c0392b;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>QCM Médecine Marrakech</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="login.html">Connexion</a></li>
+            <li><a href="register.html">Inscription</a></li>
+        </ul>
+    </nav>
+    
+    <div class="page-title">
+        <h1>Modules QCM par année</h1>
+        <p>Cliquez sur une année pour voir les modules disponibles</p>
+    </div>
+    
+    <div class="years-container">
+        <!-- Première année -->
+        <div class="year-accordion">
+            <div class="year-header" onclick="toggleYear(this)">
+                <span>Première Année</span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="year-content">
+                <div class="modules-grid">
+                    <!-- Module 1 -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h3>Module 1</h3>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-name">Anatomie</div>
+                            <div class="module-info">150 QCM | 10 Chapitres</div>
+                            <a href="modules/annee1/anatomie.html" class="module-link">Accéder</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Module 2 -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h3>Module 2</h3>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-name">Histologie</div>
+                            <div class="module-info">120 QCM | 8 Chapitres</div>
+                            <a href="modules/annee1/histologie.html" class="module-link">Accéder</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Module 3 -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h3>Module 3</h3>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-name">Biochimie</div>
+                            <div class="module-info">180 QCM | 12 Chapitres</div>
+                            <a href="modules/annee1/biochimie.html" class="module-link">Accéder</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Module 4 -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h3>Module 4</h3>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-name">Physiologie</div>
+                            <div class="module-info">200 QCM | 15 Chapitres</div>
+                            <a href="modules/annee1/physiologie.html" class="module-link">Accéder</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Deuxième année -->
+        <div class="year-accordion">
+            <div class="year-header" onclick="toggleYear(this)">
+                <span>Deuxième Année</span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="year-content">
+                <div class="modules-grid">
+                    <!-- Module 1 -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h3>Module 1</h3>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-name">Pathologie</div>
+                            <div class="module-info">170 QCM | 12 Chapitres</div>
+                            <a href="modules/annee2/pathologie.html" class="module-link">Accéder</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Module 2 -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h3>Module 2</h3>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-name">Pharmacologie</div>
+                            <div class="module-info">190 QCM | 14 Chapitres</div>
+                            <a href="modules/annee2/pharmacologie.html" class="module-link">Accéder</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Module 3 -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h3>Module 3</h3>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-name">Microbiologie</div>
+                            <div class="module-info">160 QCM | 11 Chapitres</div>
+                            <a href="modules/annee2/microbiologie.html" class="module-link">Accéder</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Module 4 -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h3>Module 4</h3>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-name">Immunologie</div>
+                            <div class="module-info">140 QCM | 9 Chapitres</div>
+                            <a href="modules/annee2/immunologie.html" class="module-link">Accéder</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Troisième année -->
+        <div class="year-accordion">
+            <div class="year-header" onclick="toggleYear(this)">
+                <span>Troisième Année</span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="year-content">
+                <div class="modules-grid">
+                    <!-- Module 1 -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h3>Module 1</h3>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-name">Cardiologie</div>
+                            <div class="module-info">180 QCM | 13 Chapitres</div>
+                            <a href="modules/annee3/cardiologie.html" class="module-link">Accéder</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Module 2 -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h3>Module 2</h3>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-name">Pneumologie</div>
+                            <div class="module-info">160 QCM | 11 Chapitres</div>
+                            <a href="modules/annee3/pneumologie.html" class="module-link">Accéder</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Module 3 -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h3>Module 3</h3>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-name">Gastro-entérologie</div>
+                            <div class="module-info">170 QCM | 12 Chapitres</div>
+                            <a href="modules/annee3/gastro.html" class="module-link">Accéder</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Module 4 -->
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h3>Module 4</h3>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-name">Néphrologie</div>
+                            <div class="module-info">150 QCM | 10 Chapitres</div>
+                            <a href="modules/annee3/nephrologie.html" class="module-link">Accéder</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 QCM Médecine Marrakech. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        function toggleYear(element) {
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('.toggle-icon');
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                icon.textContent = '+';
+            } else {
+                content.classList.add('active');
+                icon.textContent = '-';
+            }
+        }
+    </script>
+</body>
+</html>

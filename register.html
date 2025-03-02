@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - QCM Médecine Marrakech</title>
+    <style>
+        /* Variables de couleurs */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+        }
+        
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: var(--secondary-color);
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            padding: 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--light-color);
+        }
+        
+        /* Formulaire */
+        .form-container {
+            max-width: 500px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background: #c0392b;
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        .form-footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Plan d'abonnement */
+        .subscription-plans {
+            margin-top: 2rem;
+        }
+        
+        .plan-title {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .plans {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .plan {
+            flex: 1;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .plan.selected {
+            border-color: var(--secondary-color);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .plan:hover {
+            border-color: var(--secondary-color);
+        }
+        
+        .plan-name {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        
+        .plan-price {
+            margin: 0.5rem 0;
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>QCM Médecine Marrakech</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="login.html">Connexion</a></li>
+            <li><a href="register.html">Inscription</a></li>
+        </ul>
+    </nav>
+    
+    <div class="form-container">
+        <h2 class="form-title">Inscription</h2>
+        <form id="register-form">
+            <div class="form-group">
+                <label for="name">Nom complet</label>
+                <input type="text" id="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirmer le mot de passe</label>
+                <input type="password" id="confirm-password" class="form-control" required>
+            </div>
+            
+            <div class="subscription-plans">
+                <h3 class="plan-title">Choisissez votre plan d'abonnement</h3>
+                <div class="plans">
+                    <div class="plan" data-plan="monthly" onclick="selectPlan(this)">
+                        <div class="plan-name">Mensuel</div>
+                        <div class="plan-price">100 DH / mois</div>
+                        <div class="plan-description">Accès à tous les QCM pendant 1 mois</div>
+                    </div>
+                    <div class="plan" data-plan="yearly" onclick="selectPlan(this)">
+                        <div class="plan-name">Annuel</div>
+                        <div class="plan-price">800 DH / an</div>
+                        <div class="plan-description">Accès à tous les QCM pendant 1 an</div>
+                    </div>
+                </div>
+                <input type="hidden" id="selected-plan" value="">
+            </div>
+            
+            <button type="submit" class="btn">S'inscrire</button>
+        </form>
+        <div class="form-footer">
+            <p>Vous avez déjà un compte ? <a href="login.html">Se connecter</a></p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 QCM Médecine Marrakech. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        function selectPlan(element) {
+            // Retirer la classe selected de tous les plans
+            document.querySelectorAll('.plan').forEach(plan => {
+                plan.classList.remove('selected');
+            });
+            
+            // Ajouter la classe selected au plan cliqué
+            element.classList.add('selected');
+            
+            // Mettre à jour la valeur du champ caché
+            document.getElementById('selected-plan').value = element.getAttribute('data-plan');
+        }
+        
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const selectedPlan = document.getElementById('selected-plan').value;
+            
+            // Vérifier que les mots de passe correspondent
+            if (password !== confirmPassword) {
+                alert('Les mots de passe ne correspondent pas.');
+                return;
+            }
+            
+            // Vérifier qu'un plan a été sélectionné
+            if (!selectedPlan) {
+                alert('Veuillez sélectionner un plan d\'abonnement.');
+                return;
+            }
+            
+            // Ici, vous ajouterez la logique d'inscription
+            // Pour l'instant, nous allons simplement rediriger vers la page des modules
+            window.location.href = 'modules.html';
+        });
+    </script>
+</body>
+</html>
